@@ -1,1 +1,2 @@
-cmsms-data
+cmsms-data/**
+!cmsms-data/php.ini
