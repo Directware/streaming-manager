@@ -17,13 +17,14 @@ docker-compose up -d
 ```
 ### Installation starten:
 
-Öffne im Browser http://localhost:8080 und folge dem CMSMS-Installationsprozess.
-Stelle sicher, dass die Datenbankverbindungsparameter mit der Konfiguration in docker-compose.yml übereinstimmen:
+Öffne im Browser http://localhost und folge dem CMSMS-Installationsprozess. Stelle sicher, dass die Datenbankverbindungsparameter mit der Konfiguration in docker-compose.yml übereinstimmen:
 
-Host: cmsms-db
+```properties
+Host: streaming-manager-db
 Datenbankname: cmsms_db
 Benutzername: cmsms_user
 Passwort: cmsms_password
+```
 
 ## Manuelle bereinigung der Datenbank
 
