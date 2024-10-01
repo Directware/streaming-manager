@@ -24,3 +24,13 @@ Host: cmsms-db
 Datenbankname: cmsms_db
 Benutzername: cmsms_user
 Passwort: cmsms_password
+
+## Manuelle bereinigung der Datenbank
+
+```SQL
+DELETE FROM cms_modules WHERE module_name = 'StreamingManager';
+DELETE FROM cms_module_templates WHERE module_name = 'StreamingManager';
+drop table if exists cms_module_streamingmanager_tag_video_mapping cascade;
+drop table if exists cms_module_streamingmanager_tags cascade;
+drop table if exists cms_module_streamingmanager_videos cascade;
+```

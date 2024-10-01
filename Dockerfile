@@ -1,9 +1,7 @@
-# Basis-Image
-FROM arm64v8/php:7.4.9-apache-buster
+FROM arm64v8/php:7.1.3-apache-buster
 
 WORKDIR /var/www/html
 
-# Notwendige PHP-Module installieren
 RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -18,5 +16,4 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install mysqli pdo pdo_mysql zip intl \
     && docker-php-ext-enable intl
 
-# Ausgabe-Pufferung aktivieren
 RUN echo "output_buffering = On" >> /usr/local/etc/php/conf.d/docker-php.ini
