@@ -8,15 +8,17 @@
         background-color: #1e1f1f;
         color: white;
 
-        padding: 5px 10px;
+        padding: 4px 12px;
         margin: 0 4px 4px 0;
-        border-radius: 15px;
-        font-size: 14px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
     }
 
     .tag-container {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: start;
         align-items: center;
         padding: 10px 0;
@@ -27,7 +29,7 @@
     }
 </style>
 
-<h3 class="title">Your tags:</h3>
+<h3 class="title">Your tags ({count($tags)}):</h3>
 
 <div class="tag-container">
     {foreach from=$tags item=tag}

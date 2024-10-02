@@ -10,7 +10,7 @@ class StreamingManager extends CMSModule
 
     public function GetFriendlyName()
     {
-        return $this->Lang('StreamingManager');
+        return $this->Lang('friendlyName');
     }
 
     public function GetVersion()
@@ -20,7 +20,7 @@ class StreamingManager extends CMSModule
 
     public function GetHelp()
     {
-        return $this->Lang('help_text');
+        return $this->Lang('helpText');
     }
 
     public function GetAuthor()
@@ -35,7 +35,7 @@ class StreamingManager extends CMSModule
 
     public function GetChangeLog()
     {
-        return $this->Lang('changelog_text');
+        return @file_get_contents(dirname(__FILE__) . '/changelog.inc');
     }
 
     public function IsPluginModule()
@@ -55,7 +55,7 @@ class StreamingManager extends CMSModule
 
     public function GetAdminDescription()
     {
-        return $this->Lang('module_description');
+        return $this->Lang('moduleDescription');
     }
 
     public function VisibleToAdminUser()
@@ -77,11 +77,66 @@ class StreamingManager extends CMSModule
     public function UninstallPostMessage()
     {
         $this->RemovePermission('Manage_Streaming_Manager');
-        return $this->Lang('uninstall_postmessage');
+        return $this->Lang('postuninstall');
     }
 
     public function GetDependencies()
     {
         return array();
+    }
+
+    public function GetVideosByTags($tagsAsString)
+    {
+        $whereClause = "";
+
+        if ($tagsAsString) {
+            $tags = explode(',', $tagsAsString);
+            $tags = array_map(function ($tag) {
+                return trim($tag);
+            }, $tags);
+
+            $tags = array_map(function ($tag) {
+                return "'" . $tag . "'";
+            }, $tags);
+
+            $tags = implode(',', $tags);
+
+            $whereClause = 'WHERE t.name IN (' . $tags . ')';
+        }
+
+        $db = cmsms()->GetDb();
+        $videosQuery = 'SELECT 
+            v.id AS videoId, 
+            v.name AS videoName, 
+            v.streamUrl, 
+            v.description,
+            t.id AS tagId, 
+            t.name AS tagName,
+            vtm.*
+        FROM ' . cms_db_prefix() . 'module_streamingmanager_videos v
+        JOIN ' . cms_db_prefix() . 'module_streamingmanager_tag_video_mapping vtm ON v.id = vtm.videoId
+        JOIN ' . cms_db_prefix() . 'module_streamingmanager_tags t ON vtm.tagId = t.id
+        ' . $whereClause;
+
+        $redundantVideos = $db->GetArray($videosQuery);
+
+        $videosWithTags = [];
+        foreach ($redundantVideos as $vid) {
+            $videoId = $vid['videoId'];
+
+            if (!isset($videosWithTags[$videoId])) {
+                $videosWithTags[$videoId] = [
+                    'id' => $videoId,
+                    'name' => $vid['videoName'],
+                    'description' => $vid['description'],
+                    'streamUrl' => $vid['streamUrl'],
+                    'tags' => []
+                ];
+            }
+
+            $videosWithTags[$videoId]['tags'][] = $vid['tagName'];
+        }
+
+        return $videosWithTags;
     }
 }
