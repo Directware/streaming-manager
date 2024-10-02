@@ -26,6 +26,10 @@ Benutzername: cmsms_user
 Passwort: cmsms_password
 ```
 
+### Entwicklung:
+
+Starte das script `dev-watch-module-changes.sh` damit deine Änderungen sofort sichtbar werden. 
+
 ## Manuelle bereinigung der Datenbank
 
 ```SQL
