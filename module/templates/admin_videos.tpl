@@ -5,16 +5,16 @@
         padding: 4px 8px;
     }
 </style>
-<h3 class="title">Your videos ({count($videos)}):</h3>
+<h3 class="title">{$lang.yourVideos} ({count($videos)}):</h3>
 
 <table id="video-table" class="pagetable">
     <thead>
         <tr>
-            <th style="width: 50px;">ID</th>
-            <th style="width: 200px;">Name</th>
-            <th style="width: 300px">Description</th>
-            <th style="width: auto;">Stream URL</th>
-            <th style="width: 300px;">Tags</th>
+            <th style="width: 50px;">{$lang.videoId}</th>
+            <th style="width: 200px;">{$lang.videoName}</th>
+            <th style="width: 300px">{$lang.videoDescription}</th>
+            <th style="width: auto;">{$lang.videoStreamUrl}</th>
+            <th style="width: 300px;">{$lang.videoTags}</th>
             <th style="width: 100px;"></th>
         </tr>
     </thead>
@@ -35,7 +35,7 @@
             <td>
             {form_start action='delete_video' method='post'}
                 <input type="hidden" name="video_id" value="{$video.id}" />
-                <input type="submit" name="submit_delete_video" value="Delete" onclick="return confirm('Bist du sicher, dass du diese Aktion ausführen möchtest?');" />
+                <input type="submit" name="submit_delete_video" value="Delete" onclick="return confirm('{$lang.confirm}');" />
             {form_end}
             </td>
         </tr>

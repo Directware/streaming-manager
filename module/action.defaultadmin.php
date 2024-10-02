@@ -12,7 +12,9 @@ if (isset($params['error'])) {
 
 $tagsQuery = 'SELECT id, name FROM ' . cms_db_prefix() . 'module_streamingmanager_tags ORDER BY name ASC';
 $tags = $db->GetArray($tagsQuery);
+
 $smarty->assign('tags', $tags);
+$smarty->assign('lang', $this->GetCurrentLanguageTranslations());
 
 echo $this->StartTabHeaders();
 echo $this->SetTabHeader('tags', 'Tags');

@@ -19,22 +19,22 @@
     }
 </style>
 
-<h3 class="title">Add new video:</h3>
+<h3 class="title">{$lang.addNewVideo}</h3>
 
 <div class="new-video-form-wrapper">
 {form_start action='add_video' method='post'}
     <div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center;">
-        <input type="text" name="video_name" id="video_name" placeholder="Name" />
-        <input type="text" name="video_url" id="video_url" placeholder="Url" />
-        <input type="text" name="video_description" id="video_description" placeholder="Description" />
+        <input type="text" name="video_name" id="video_name" placeholder="{$lang.videoName}" />
+        <input type="text" name="video_url" id="video_url" placeholder="{$lang.videoStreamUrl}" />
+        <input type="text" name="video_description" id="video_description" placeholder="{$lang.videoDescription}" />
     </div>
 
-    <select id="video_tags" name="video_tag_ids[]" multiple="multiple" size="3">
+    <select id="video_tags" name="video_tag_ids[]" multiple="multiple" size="5">
         {foreach from=$tags item=tag}
         <option value="{$tag.id}">{$tag.name}</option>
         {/foreach}
     </select>
 
-    <input type="submit" name="submit_new_video" value="Add Video" />
+    <input type="submit" name="submit_new_video" value="{$lang.addNewVideo}" />
 {form_end}
 </div>

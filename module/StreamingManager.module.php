@@ -85,6 +85,23 @@ class StreamingManager extends CMSModule
         return array();
     }
 
+    function GetCurrentLanguageTranslations()
+    {
+        $translations = [];
+        $currentLang = $this->GetPreference('default_cms_lang', 'en_US');
+        $langFile = dirname(__FILE__) . "/lang/ext/{$currentLang}.php";
+
+        if (file_exists($langFile)) {
+            include $langFile;
+        } else {
+            include dirname(__FILE__) . "/lang/en_US.php";
+        }
+
+        $translations = $lang;
+
+        return $translations;
+    }
+
     public function GetVideosByTags($tagsAsString)
     {
         $whereClause = "";

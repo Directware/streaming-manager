@@ -20,6 +20,21 @@ $lang['helpText'] = <<<EOT
 </ul>
 EOT;
 
+// Template translations
+$lang['confirm'] = 'Are you sure you want to do this action?';
+$lang['addNewTag'] = 'Add New Tag';
+$lang['inputTagName'] = 'Type your new tag name...';
+$lang['addTag'] = 'Add Tag';
+$lang['yourTags'] = 'Your tags';
+$lang['addNewVideo'] = 'Add new video';
+$lang['videoName'] = 'Video name';
+$lang['videoId'] = 'Video ID';
+$lang['videoDescription'] = 'Video description';
+$lang['videoStreamUrl'] = 'Video stream URL';
+$lang['videoTags'] = 'Tags';
+$lang['yourVideos'] = 'Your videos';
+
+
 // Error messages
 $lang['ErrorTagCannotBeEmpty'] = 'Tag cannot be empty.';
 $lang['ErrorTagAlreadyExists'] = 'Tag already exists.';
