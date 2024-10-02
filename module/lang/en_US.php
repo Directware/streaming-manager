@@ -33,7 +33,7 @@ $lang['videoDescription'] = 'Video description';
 $lang['videoStreamUrl'] = 'Video stream URL';
 $lang['videoTags'] = 'Tags';
 $lang['yourVideos'] = 'Your videos';
-
+$lang['noVideosYet'] = 'No videos yet.';
 
 // Error messages
 $lang['ErrorTagCannotBeEmpty'] = 'Tag cannot be empty.';

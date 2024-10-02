@@ -40,5 +40,9 @@
             </td>
         </tr>
     {/foreach}
+
+    {if $videos|@count == 0}
+        <tr><td colspan="5" style="text-align: center;padding: 16px 0;">{$lang.noVideosYet}</td></tr>
+    {/if}
     </tbody>
 </table>

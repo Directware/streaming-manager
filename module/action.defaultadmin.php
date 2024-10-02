@@ -16,10 +16,19 @@ $tags = $db->GetArray($tagsQuery);
 $smarty->assign('tags', $tags);
 $smarty->assign('lang', $this->GetCurrentLanguageTranslations());
 
+if (sizeof($tags) == 0) {
+    echo '<div style="font-size: 18px; background: #ffc107; padding: 8px 12px; border-radius: 4px; border: 1px solid #ffc720;">';
+    echo "Please note that at least one tag must be added before you can proceed. Tags help categorize your videos and make them easier to find.";
+    echo '</div>';
+}
+
 echo $this->StartTabHeaders();
 echo $this->SetTabHeader('tags', 'Tags');
-echo $this->SetTabHeader('videos', 'Videos');
-echo $this->EndTabHeaders();
+
+if (sizeof($tags) > 0) {
+    echo $this->SetTabHeader('videos', 'Videos');
+    echo $this->EndTabHeaders();
+}
 
 echo $this->StartTabContent();
 /**
@@ -34,19 +43,21 @@ echo $this->ProcessTemplate('admin_tags.tpl');
 
 echo $this->EndTab();
 
-/**
- * Videos tab
- */
-echo $this->StartTab('videos');
+if (sizeof($tags) > 0) {
+    /**
+     * Videos tab
+     */
+    echo $this->StartTab('videos');
 
-$videosWithTags = $this->GetVideosByTags("");
-$smarty->assign('videos', $videosWithTags);
+    $videosWithTags = $this->GetVideosByTags("");
+    $smarty->assign('videos', $videosWithTags);
 
-echo $this->ProcessTemplate('admin_add_video.tpl');
+    echo $this->ProcessTemplate('admin_add_video.tpl');
 
-echo "</br>";
-echo $this->ProcessTemplate('admin_videos.tpl');
+    echo "</br>";
+    echo $this->ProcessTemplate('admin_videos.tpl');
 
-echo $this->EndTab();
+    echo $this->EndTab();
+}
 
 echo $this->EndTabContent();

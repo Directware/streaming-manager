@@ -65,7 +65,7 @@ class StreamingManager extends CMSModule
 
     public function MinimumCMSVersion()
     {
-        return '2.2.2';
+        return '2.2.9';
     }
 
     public function InstallPostMessage()

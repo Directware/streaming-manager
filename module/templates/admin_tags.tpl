@@ -29,7 +29,7 @@
     }
 </style>
 
-<h3 class="title">{$lang.yourTags} ({count($tags)}):</h3>
+<h3 class="title">{$lang.yourTags} ({count($tags)})</h3>
 
 <div class="tag-container">
     {foreach from=$tags item=tag}
