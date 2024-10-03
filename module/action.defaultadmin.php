@@ -15,7 +15,7 @@ $queriesStartTime = microtime(true);
 $tagsQuery = 'SELECT id, name FROM ' . cms_db_prefix() . 'module_streamingmanager_tags ORDER BY name ASC';
 $tags = $db->GetArray($tagsQuery);
 
-$videosWithTags = $this->GetVideosByTags("");
+$videosWithTags = $this->GetVideosByTags("", "");
 $queriesEndTime = microtime(true);
 $duration = number_format($queriesEndTime - $queriesStartTime, 5);
 echo '<p style="font-size: 12px; color: grey;">Query all videos with tags execution time: ' . ($duration) . 's</p>';

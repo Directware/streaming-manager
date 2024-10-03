@@ -102,7 +102,7 @@ class StreamingManager extends CMSModule
         return $translations;
     }
 
-    public function GetVideosByTags($tagsAsString)
+    public function GetVideosByTags($tagsAsString, $excludedTagsAsString)
     {
         $whereClause = "";
 
@@ -121,39 +121,46 @@ class StreamingManager extends CMSModule
             $whereClause = 'WHERE t.name IN (' . $tags . ')';
         }
 
+        if ($excludedTagsAsString) {
+            $excludedTags = explode(',', $excludedTagsAsString);
+            $excludedTags = array_map(function ($tag) {
+                return trim($tag);
+            }, $excludedTags);
+
+            $excludedTags = array_map(function ($tag) {
+                return "'" . $tag . "'";
+            }, $excludedTags);
+
+            $excludedTags = implode(',', $excludedTags);
+
+            if (strlen($whereClause) == 0) {
+                $whereClause .= 'WHERE ';
+            } else {
+                $whereClause .= ' AND ';
+            }
+
+            $whereClause .= 't.name NOT IN (' . $excludedTags . ')';
+        }
+
         $db = cmsms()->GetDb();
+
         $videosQuery = 'SELECT 
-            v.id AS videoId, 
-            v.name AS videoName, 
+            v.id AS id, 
+            v.name AS name, 
             v.streamUrl, 
             v.description,
             t.id AS tagId, 
             t.name AS tagName,
-            vtm.*
+            vtm.*,
+            GROUP_CONCAT(t.name SEPARATOR ", ") AS tags
         FROM ' . cms_db_prefix() . 'module_streamingmanager_videos v
         JOIN ' . cms_db_prefix() . 'module_streamingmanager_tag_video_mapping vtm ON v.id = vtm.videoId
-        JOIN ' . cms_db_prefix() . 'module_streamingmanager_tags t ON vtm.tagId = t.id
-        ' . $whereClause;
+        JOIN ' . cms_db_prefix() . 'module_streamingmanager_tags t ON vtm.tagId = t.id 
+        ' . $whereClause . '
+        GROUP BY v.id';
 
-        $redundantVideos = $db->GetArray($videosQuery);
+        $videos = $db->GetArray($videosQuery);
 
-        $videosWithTags = [];
-        foreach ($redundantVideos as $vid) {
-            $videoId = $vid['videoId'];
-
-            if (!isset($videosWithTags[$videoId])) {
-                $videosWithTags[$videoId] = [
-                    'id' => $videoId,
-                    'name' => $vid['videoName'],
-                    'description' => $vid['description'],
-                    'streamUrl' => $vid['streamUrl'],
-                    'tags' => []
-                ];
-            }
-
-            $videosWithTags[$videoId]['tags'][] = $vid['tagName'];
-        }
-
-        return $videosWithTags;
+        return $videos;
     }
 }
