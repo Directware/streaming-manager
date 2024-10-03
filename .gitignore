@@ -1,2 +1,3 @@
 cmsms-data/**
 !cmsms-data/php.ini
+seed-insert_statements.sql
