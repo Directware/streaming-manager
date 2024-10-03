@@ -26,11 +26,14 @@ EOT;
 // Template translations
 $lang['confirm'] = 'Are you sure you want to do this action?';
 $lang['delete'] = 'Delete';
+$lang['edit'] = 'Edit';
+$lang['save'] = 'Save';
 $lang['addNewTag'] = 'Add New Tag';
 $lang['inputTagName'] = 'Type your new tag name...';
 $lang['addTag'] = 'Add Tag';
 $lang['yourTags'] = 'Your tags';
 $lang['addNewVideo'] = 'Add new video';
+$lang['editVideo'] = 'Edit video';
 $lang['videoName'] = 'Video name';
 $lang['videoId'] = 'Video ID';
 $lang['videoDescription'] = 'Video description';
@@ -46,9 +49,11 @@ $lang['ErrorVideoNotAdded'] = 'Video not added. Please fill all fields.';
 $lang['ErrorVideoIdNotProvided'] = 'Video ID not provided.';
 $lang['ErrorTagIdNotProvided'] = 'Tag ID not provided.';
 $lang['ErrorTagCannotBeDeleted'] = 'Tag cannot be deleted. There are videos associated with this tag.';
+$lang['ErrorVideoNotFound'] = 'Video not found.';
 
 // Success messages
 $lang['SuccessTagAdded'] = 'Tag added successfully.';
 $lang['VideoSuccessfullyAdded'] = 'Video added successfully.';
 $lang['SuccessVideoDeleted'] = 'Video deleted successfully.';
 $lang['SuccessTagDeleted'] = 'Tag deleted successfully.';
+$lang['SuccessVideoUpdated'] = 'Video updated successfully.';
