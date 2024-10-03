@@ -161,6 +161,10 @@ class StreamingManager extends CMSModule
 
         $videos = $db->GetArray($videosQuery);
 
+        foreach ($videos as &$video) {
+            $video['tags'] = explode(', ', $video['tags']);
+        }
+
         return $videos;
     }
 }
