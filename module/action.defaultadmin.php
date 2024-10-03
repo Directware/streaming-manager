@@ -18,7 +18,7 @@ $tags = $db->GetArray($tagsQuery);
 $videosWithTags = $this->GetVideosByTags("", "");
 $queriesEndTime = microtime(true);
 $duration = number_format($queriesEndTime - $queriesStartTime, 5);
-echo '<p style="font-size: 12px; color: grey;">Query all videos with tags execution time: ' . ($duration) . 's</p>';
+echo '<p style="font-size: 12px; color: grey;">Query all videos and tags execution time: ' . ($duration) . 's</p>';
 
 if (sizeof($tags) == 0) {
     echo '<div style="margin: 8px 0 0 0;font-size: 18px; background: #ffc107; padding: 8px 12px; border-radius: 4px; border: 1px solid #ffc720;">';
