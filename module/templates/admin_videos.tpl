@@ -4,6 +4,25 @@
         border-top: 1px solid rgba(0,0,0,0.2);
         padding: 4px 8px;
     }
+
+    .submit-remove-video {
+        background: #dc3545; 
+        border-color: #dc3545;
+        color: #000;
+        font-weight: 500;
+    }
+
+    .submit-remove-video .ui-icon {
+        display: none;
+    }
+
+    .submit-remove-video .ui-button-text {
+        padding: 4px 12px;
+    }
+
+    .submit-remove-video:hover {
+        color: #fff;
+    }
 </style>
 <h3 class="title">{$lang.yourVideos} ({count($videos)}):</h3>
 
@@ -15,7 +34,7 @@
             <th style="width: 300px">{$lang.videoDescription}</th>
             <th style="width: auto;">{$lang.videoStreamUrl}</th>
             <th style="width: 300px;">{$lang.videoTags}</th>
-            <th style="width: 100px;"></th>
+            <th style="width: 150px;"></th>
         </tr>
     </thead>
     <tbody>
@@ -39,7 +58,7 @@
             {form_end}
             {form_start action='delete_video' method='post'}
                 <input type="hidden" name="video_id" value="{$video.id}" />
-                <input type="submit" name="submit_delete_video" value="{$lang.delete}" onclick="return confirm('{$lang.confirm}');" style="background: #dc3545; color: #fff; border-color: #dc3545;" />
+                <input type="submit" name="submit_remove_video" value="{$lang.delete}" onclick="return confirm('{$lang.confirm}');" class="submit-remove-video" />
             {form_end}
             </td>
         </tr>
