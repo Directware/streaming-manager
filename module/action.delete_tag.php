@@ -14,7 +14,7 @@ if (isset($_POST['submit_delete_tag'])) {
     $tagQuery = 'SELECT name FROM ' . cms_db_prefix() . 'module_streamingmanager_tags WHERE id = ?';
     $tagName = $db->GetOne($tagQuery, [$tagId]);
 
-    $videosWithTags = $this->GetVideosByTags($tagName);
+    $videosWithTags = $this->GetVideosByTags($tagName, "");
 
     if (sizeof($videosWithTags) > 0) {
         $params['error'] = $this->Lang('ErrorTagCannotBeDeleted');
@@ -23,7 +23,11 @@ if (isset($_POST['submit_delete_tag'])) {
     }
 
     $query = 'DELETE FROM ' . cms_db_prefix() . 'module_streamingmanager_tags WHERE id = ?';
-    $db->Execute($query, [$tagId]);
+    $success = $db->Execute($query, [$tagId]);
+
+    if (!$success) {
+        die($db->ErrorMsg());
+    }
 
     $params['message'] = $this->Lang('SuccessTagDeleted');
     $this->Redirect($id, 'defaultadmin', $returnid, $params);
