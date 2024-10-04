@@ -78,7 +78,7 @@
     {foreach from=$allTags item=tag}
         <span class="tag-badge">
             {$tag.name}
-            <input type="checkbox" style="margin-left: 12px;"
+            <input type="checkbox" style="margin-left: 12px;" name="tag_ids[]" value="{$tag.id}"
                 {foreach from=$assignedTags item=assigned}
                    {if $assigned.id == $tag.id}checked{/if}
                {/foreach}/>
@@ -87,8 +87,10 @@
     </div>
     <br/>
 
-    <input type="submit" name="submit_update_video" value="{$lang.save}" />
-    <input type="submit" name="submit_cancel_edit_video" value="{$lang.cancel}" />
+    <div>
+        <input type="submit" name="submit_update_video" value="{$lang.save}" />
+        <input type="submit" name="submit_cancel_edit_video" value="{$lang.cancel}" />
+    </div>
     <br/>
 {form_end}
 </div>
