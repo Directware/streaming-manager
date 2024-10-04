@@ -10,13 +10,14 @@
 
     .stream-manager-video-card {
         margin: 0px;
+        width:{$width|default:300}px;
     }
 
     .stream-manager-video-card .title {
         margin: 0;
         font-size: 14px;
         font-weight: 500;
-        max-width: 300px;
+        max-width: {$width|default:300}px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
