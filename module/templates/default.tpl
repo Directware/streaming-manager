@@ -27,8 +27,8 @@
 {foreach from=$videos item=video}
     <div class="stream-manager-video-card">
         <iframe 
-            width="300" 
-            height="185" 
+            width="{$width|default:300}" 
+            height="{$height|default:185}" 
             src="{$video.streamUrl}" 
             title="{$video.name}" 
             frameborder="0" 

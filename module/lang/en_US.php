@@ -20,6 +20,8 @@ $lang['helpText'] = <<<EOT
 <ul>
     <li><strong>tags:</strong> A comma-separated list of tag names. Only videos with these tags will be displayed (optional).</li>
     <li><strong>excluded_tags:</strong> A comma-separated list of tag names. Videos with these tags will be excluded (optional).</li>
+    <li><strong>width:</strong> The width of the video player (optional). Example: width="400"</li>
+    <li><strong>height:</strong> The height of the video player (optional). Example: height="300"</li>
 </ul>
 EOT;
 
