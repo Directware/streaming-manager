@@ -53,6 +53,9 @@ $lang['ErrorVideoIdNotProvided'] = 'Video ID not provided.';
 $lang['ErrorTagIdNotProvided'] = 'Tag ID not provided.';
 $lang['ErrorTagCannotBeDeleted'] = 'Tag cannot be deleted. There are videos associated with this tag.';
 $lang['ErrorVideoNotFound'] = 'Video not found.';
+$lang['videoNameMissing'] = 'Video name is missing.';
+$lang['videoStreamUrlMissing'] = 'Video stream URL is missing.';
+$lang['videoTagsMissing'] = 'Video tags are missing.';
 
 // Success messages
 $lang['SuccessTagAdded'] = 'Tag added successfully.';
