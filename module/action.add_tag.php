@@ -14,7 +14,12 @@ if (isset($_POST['submit_new_tag'])) {
             $this->Redirect($id, 'defaultadmin', $returnid, $params);
         } else {
             $query = 'INSERT INTO ' . cms_db_prefix() . 'module_streamingmanager_tags (name) VALUES (?)';
-            $db->Execute($query, [$tagName]);
+            $success = $db->Execute($query, [$tagName]);
+
+            if (!$success) {
+                $params['error'] = $db->ErrorMsg();
+                $this->Redirect($id, 'defaultadmin', $returnid, $params);
+            }
 
             $params['message'] = $this->Lang('SuccessTagAdded');
             $this->Redirect($id, 'defaultadmin', $returnid, $params);
