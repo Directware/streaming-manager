@@ -31,25 +31,15 @@ $smarty->assign('tags', $tags);
 $smarty->assign('lang', $this->GetCurrentLanguageTranslations());
 
 echo $this->StartTabHeaders();
-echo $this->SetTabHeader('tags', 'Tags');
 
 if (sizeof($tags) > 0) {
     echo $this->SetTabHeader('videos', 'Videos');
-    echo $this->EndTabHeaders();
 }
 
+echo $this->SetTabHeader('tags', 'Tags');
+echo $this->EndTabHeaders();
+
 echo $this->StartTabContent();
-/**
- * Tags tab
- */
-echo $this->StartTab('tags');
-
-echo $this->ProcessTemplate('admin_add_tag.tpl');
-echo "</br>";
-echo "</br>";
-echo $this->ProcessTemplate('admin_tags.tpl');
-
-echo $this->EndTab();
 
 if (sizeof($tags) > 0) {
     /**
@@ -63,6 +53,18 @@ if (sizeof($tags) > 0) {
 
     echo $this->EndTab();
 }
+
+/**
+ * Tags tab
+ */
+echo $this->StartTab('tags');
+
+echo $this->ProcessTemplate('admin_add_tag.tpl');
+echo "</br>";
+echo "</br>";
+echo $this->ProcessTemplate('admin_tags.tpl');
+
+echo $this->EndTab();
 
 echo $this->EndTabContent();
 
