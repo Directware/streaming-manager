@@ -28,6 +28,7 @@ $lang['confirm'] = 'Are you sure you want to do this action?';
 $lang['delete'] = 'Delete';
 $lang['edit'] = 'Edit';
 $lang['save'] = 'Save';
+$lang['cancel'] = 'Cancel';
 $lang['addNewTag'] = 'Add New Tag';
 $lang['inputTagName'] = 'Type your new tag name...';
 $lang['addTag'] = 'Add Tag';

@@ -1,4 +1,10 @@
 <?php
+
+if (isset($_POST['submit_cancel_edit_video'])) {
+    $this->Redirect($id, 'defaultadmin', $returnid, $params);
+    return;
+}
+
 if (isset($_POST['submit_update_video'])) {
     $videoId = $_POST['video_id'];
 

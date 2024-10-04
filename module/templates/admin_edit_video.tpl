@@ -88,6 +88,7 @@
     <br/>
 
     <input type="submit" name="submit_update_video" value="{$lang.save}" />
+    <input type="submit" name="submit_cancel_edit_video" value="{$lang.cancel}" />
     <br/>
 {form_end}
 </div>
