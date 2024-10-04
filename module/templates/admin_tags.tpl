@@ -10,7 +10,7 @@
 
         padding: 4px 12px;
         margin: 0 4px 4px 0;
-        border-radius: 4px;
+        border-radius: 12px;
         font-size: 12px;
         font-weight: 500;
     }
@@ -34,7 +34,7 @@
         justify-content: center;
         align-items: center;
         color: white; 
-        background: red; 
+        background: #dc3545; 
         width: 14px; 
         height: 14px; 
         font-size: 12px;

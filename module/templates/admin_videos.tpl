@@ -39,7 +39,7 @@
             {form_end}
             {form_start action='delete_video' method='post'}
                 <input type="hidden" name="video_id" value="{$video.id}" />
-                <input type="submit" name="submit_delete_video" value="{$lang.delete}" onclick="return confirm('{$lang.confirm}');" />
+                <input type="submit" name="submit_delete_video" value="{$lang.delete}" onclick="return confirm('{$lang.confirm}');" style="background: #dc3545; color: #fff; border-color: #dc3545;" />
             {form_end}
             </td>
         </tr>
