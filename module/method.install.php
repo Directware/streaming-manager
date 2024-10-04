@@ -22,7 +22,7 @@ try {
 
     $query = "CREATE TABLE IF NOT EXISTS " . cms_db_prefix() . "module_streamingmanager_tags (
         id INT(11) PRIMARY KEY AUTO_INCREMENT,
-        name TEXT NOT NULL UNIQUE
+        name VARCHAR(255) NOT NULL UNIQUE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
     $successTagsTable = $db->Execute($query);
 
