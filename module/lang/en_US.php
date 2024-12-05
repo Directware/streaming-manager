@@ -14,10 +14,20 @@ $lang['helpText'] = <<<EOT
     {cms_module module=StreamingManager tags="YourTag, SomeOtherTag, FancyTag" excluded_tags="TagToExclude, AnotherTagToExclude"}
 </code>
 
+<br />
+<br />
+
+<p>To display videos based on video ID, use the following custom Smarty tag:</p>
+
+<code>
+    {cms_module module=StreamingManager id="YourVideoId"}
+</code>
+
 <br/>
 <br/>
 <p>Available parameters:</p>
 <ul>
+    <li><strong>id:</strong> The ID of the video to display (optional).</li>
     <li><strong>tags:</strong> A comma-separated list of tag names. Only videos with these tags will be displayed (optional).</li>
     <li><strong>excluded_tags:</strong> A comma-separated list of tag names. Videos with these tags will be excluded (optional).</li>
     <li><strong>width:</strong> The width of the video player (optional). Example: width="400"</li>
