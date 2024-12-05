@@ -23,24 +23,35 @@
 
         margin: 10px 0;
         padding: 0 9px;
-        color: #e08008;
-        font-weight: 500;
     }
 </style>
 
 <div class="stream-manager-video-list">
 {foreach from=$videos item=video}
     <div class="stream-manager-video-card" style="width:{$width|default:300}px;">
-        <iframe 
-            width="{$width|default:300}" 
-            height="{$height|default:185}" 
-            src="{$video.streamUrl}" 
-            title="{$video.name}" 
-            frameborder="0" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-        </iframe>
-        <h5 class="title" title="{$video.name}" style="max-width: {$width|default:300}px;">{$video.name}</h5>
+        {if $video.streamUrl|startswith:"https://"}
+            <iframe 
+                width="{$width|default:300}" 
+                height="{$height|default:185}" 
+                src="{$video.streamUrl}" 
+                title="{$video.name}" 
+                frameborder="0" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+            </iframe>
+        {else}
+            <video 
+                width="{$width|default:300}" 
+                height="{$height|default:185}" 
+                controls 
+                controlsList="nodownload">
+                <source src="{$video.streamUrl}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        {/if}
+        <h5 class="title" title="{$video.name}" style="max-width: {$width|default:300}px;">
+            <a href="#">{$video.name}</a>
+        </h5>
     </div>
 {/foreach}
 </div>
