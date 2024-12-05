@@ -10,23 +10,27 @@
 
     .stream-manager-video-card {
         margin: 0px;
-        width:{$width|default:300}px;
+        border: 1px solid #ddd;
+        padding: 4px;
+        border-radius: 4px;
     }
 
     .stream-manager-video-card .title {
+        font-family: 'Oswald', sans-serif;
         margin: 0;
         font-size: 14px;
         font-weight: 500;
-        max-width: {$width|default:300}px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+
+        margin: 10px 0;
+        padding: 0 9px;
+        color: #e08008;
+        font-weight: 500;
     }
 </style>
 
 <div class="stream-manager-video-list">
 {foreach from=$videos item=video}
-    <div class="stream-manager-video-card">
+    <div class="stream-manager-video-card" style="width:{$width|default:300}px;">
         <iframe 
             width="{$width|default:300}" 
             height="{$height|default:185}" 
@@ -36,7 +40,7 @@
             referrerpolicy="strict-origin-when-cross-origin" 
             allowfullscreen>
         </iframe>
-        <p class="title">{$video.name}</p>
+        <h5 class="title" title="{$video.name}" style="max-width: {$width|default:300}px;">{$video.name}</h5>
     </div>
 {/foreach}
 </div>

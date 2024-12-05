@@ -61,6 +61,10 @@
 {form_start action='update_video' method='post'}
     <input type="hidden" name="video_id" value="{$video.id}" />
 
+    <label>ID</label>
+    <input type="text" disabled value="{$video.id}" />
+    <br/>
+
     <label>{$lang.videoName}</label>
     <input type="text" name="video_name" id="video_name" value="{$video.name}" />
     <br/>

@@ -167,4 +167,15 @@ class StreamingManager extends CMSModule
 
         return $videos;
     }
+
+    public function GetVideoById($id)
+    {
+        $db = cmsms()->GetDb();
+
+        $videosQuery = 'SELECT * FROM ' . cms_db_prefix() . 'module_streamingmanager_videos WHERE id = ?';
+
+        $video = $db->GetRow($videosQuery, [$id]);
+
+        return $video;
+    }
 }
